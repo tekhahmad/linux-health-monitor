@@ -1,0 +1,6 @@
+[Unit]
+Description=Generate daily monitoring report
+
+[Service]
+Type=oneshot
+ExecStart=/opt/health-monitor/bin/report.sh --days 1 --out /var/log/health-monitor/daily-report.md

@@ -1,0 +1,15 @@
+[Unit]
+Description=Server health check
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/health-monitor/bin/healthcheck.sh --quiet
+# Exit 1 (WARN) and 2 (CRIT) are valid monitoring results, not unit failures.
+SuccessExitStatus=1 2
+User=root
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/log/health-monitor /var/lib/health-monitor

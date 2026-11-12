@@ -1,0 +1,4 @@
+# Alternative to systemd timers: sudo cp cron/health-monitor.cron /etc/cron.d/health-monitor
+*/5 * * * * root /opt/health-monitor/bin/healthcheck.sh --quiet
+0 18 * * *  root /opt/health-monitor/bin/report.sh --days 1 --out /var/log/health-monitor/daily-report.md
+0 18 * * 5  root /opt/health-monitor/bin/report.sh --days 7 --out /var/log/health-monitor/weekly-report.md
